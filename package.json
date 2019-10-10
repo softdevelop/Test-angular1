@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "devDependencies": {
+    "bootstrap": "4.3.1"
+  }
+}
