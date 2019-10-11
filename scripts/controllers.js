@@ -1,8 +1,8 @@
 // Define controller and the objects need to reference.
-myAngularApp.controller('appController', ['$scope', 'orderByFilter', function ($scope, orderBy) {
+myAngularApp.controller('appController', ['$scope', 'photoService', 'orderByFilter', function ($scope, photoService, orderBy) {
 	$scope.tab = 1;
 
-    $scope.photos = orderBy(photos, 'name');
+    $scope.photos = orderBy(photoService.getPhotoArray(), 'name');
 
     $scope.setTab = function(newTab){
       $scope.tab = newTab;
