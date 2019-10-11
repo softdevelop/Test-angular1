@@ -14,12 +14,33 @@
   <body ng-app="myAngularApp" ng-controller="appController">
     <!-- Navigation -->
     <header class="navbar navbar-inverse navbar-fixed-top">
-      <a class="navbar-brand" href="#">Images voting</a>
+      <ul class="nav nav-pills nav-stacked">
+        <li ng-class="{ active: isSet(1) }">
+          <a href ng-click="setTab(1)" class="nav-link">Home</a>
+        </li>
+        <li ng-class="{ active: isSet(2) }">
+          <a href ng-click="setTab(2)" class="nav-link">Photo List</a>
+        </li>
+        <li ng-class="{ active: isSet(3) }">
+          <a href ng-click="setTab(3)" class="nav-link">Show Top 6 Rating</a>
+        </li>
+      </ul>
     </header>
 
     <!-- Pictures -->
     <section class="container">
-
+      <div class="nav-tabs">
+        <div ng-show="isSet(1)">
+          <h1>FrontendTest-AngularJS</h1>
+          <p>Welcome to the website!</p>
+        </div>
+        <div ng-show="isSet(2)">
+            <h1>Photo List</h1>
+        </div>
+          <div ng-show="isSet(3)">
+            <h1>Top 6 Rating</h1>
+        </div>
+      </div>
     </section>
     
     <footer class="footer text-center">

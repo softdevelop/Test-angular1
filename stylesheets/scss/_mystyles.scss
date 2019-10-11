@@ -1,3 +1,15 @@
 body{
 
 }
+
+/* text color */
+h1, p, a {
+  color: #4DC9C9 !important;
+}
+
+/* nav link color */
+.nav-pills > li.active > a {
+  background-color: #6C6C6C !important;
+  border-color: #6C6C6C !important;
+  border-radius: 25px; 
+}
