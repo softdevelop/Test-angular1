@@ -13,3 +13,26 @@ h1, p, a {
   border-color: #6C6C6C !important;
   border-radius: 25px; 
 }
+
+/* photo width */
+.photo-container {
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.photo-container .photo {
+	width: 20%;
+	float: left;
+}
+.photo-container .photo .img-responsive{
+	width: 100%;
+}
+@media (max-width: 768px) {
+	.photo-container .photo {
+		width: 33.3333%;
+	}
+}
+@media (max-width: 480px) {
+	.photo-container .photo {
+		width: 100%;
+	}
+}
