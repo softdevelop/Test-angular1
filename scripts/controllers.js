@@ -3,6 +3,11 @@ myAngularApp.controller('appController', ['$scope', 'photoService', 'orderByFilt
 	$scope.tab = 1;
 
     $scope.photos = orderBy(photoService.getPhotoArray(), 'name');
+    
+    $scope.rating = {
+    	current: 0,
+    	max: 5
+    };
 
     $scope.setTab = function(newTab){
       $scope.tab = newTab;
