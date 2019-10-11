@@ -1,12 +1,15 @@
 myAngularApp.directive('starRating', function () {
     return {
         restrict: 'A',
-        template: '<div class="rating-inner"><ul class="rating">' +
+        template: '<div class="rating-inner">' +
+            '<ul class="rating">' +
             '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
             '\u2605' +
             '</li>' +
             '</ul>' +
-            '<p>{{photoName}}</p></div>',
+            '<p>{{photoName}}</p>' +
+            '<button ng-click="toggle(-1)">Unvote</button>' +
+            '</div>',
         scope: {
             ratingValue: '=',
             max: '=',
