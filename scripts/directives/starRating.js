@@ -1,22 +1,23 @@
-myAngularApp.directive('starRating', function () {
+myAngularApp.directive('starRating', function (ratingDataService) {
     return {
         restrict: 'A',
         template: '<div class="rating-inner">' +
             '<ul class="rating">' +
-            '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
+            '<li ng-repeat="star in stars" ng-class="star" ng-click="vote($index)">' +
             '\u2605' +
             '</li>' +
             '</ul>' +
             '<p>{{photoName}}</p>' +
-            '<button ng-click="toggle(-1)">Unvote</button>' +
+            '<button ng-click="unvote()">Unvote</button>' +
             '</div>',
         scope: {
-            ratingValue: '=',
+            photoId: '=',
             max: '=',
             photoName: '=',
         },
         link: function (scope, elem, attrs) {
-
+            scope.ratingValue = ratingDataService.get(scope.photoId, 0);
+            
             var updateStars = function (rate) {
                 scope.stars = [];
                 for (var i = 0; i < scope.max; i++) {
@@ -26,9 +27,16 @@ myAngularApp.directive('starRating', function () {
                 }
             };
 
-            scope.toggle = function (index) {
+            scope.vote = function (index) {
                 scope.ratingValue = index + 1;
                 updateStars(scope.ratingValue);
+                ratingDataService.set(scope.photoId, scope.ratingValue);
+            };
+
+            scope.unvote = function () {
+                scope.ratingValue = 0;
+                updateStars(scope.ratingValue);
+                ratingDataService.remove(scope.photoId);
             };
 
             updateStars(scope.ratingValue);
