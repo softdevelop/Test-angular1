@@ -48,6 +48,11 @@ myAngularApp.directive('starRating', function (ratingDataService) {
                 return scope.ratingValue == 0;
             };
 
+            scope.$watch("ratingValue",function(newValue,oldValue) {
+                //update photoArray when vote or unvote
+                scope.$parent.updateArray();
+            });
+
             updateStars(scope.ratingValue);
         }
     }

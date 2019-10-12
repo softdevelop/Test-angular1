@@ -41,11 +41,13 @@
         <div ng-show="isSet(2)">
           <h1>Photo List</h1>
           <p>You could vote maximum of 10 photos</p>
-          <div photo-list photo-array="photos" max-rating="maxRating">
+          <div photo-list order-property="'name'" reverse="false" max-rating="maxRating">
           </div>   
         </div>
-          <div ng-show="isSet(3)">
-            <h1>Top 6 Rating</h1>
+        <div ng-show="isSet(3)">
+          <h1>Top 6 Rating</h1>
+          <div photo-list num="6" order-property="'rating'" reverse="true" max-rating="maxRating">
+          </div>   
         </div>
       </div>
     </section>
