@@ -2,13 +2,13 @@ myAngularApp.directive('starRating', function (ratingDataService) {
     return {
         restrict: 'A',
         template: '<div class="rating-inner">' +
-            '<ul class="rating">' +
+            '<p>{{photoName}}</p>' +
+            '<ul class="rating" ng-hide="isHideVote()">' +
             '<li ng-repeat="star in stars" ng-class="star" ng-click="vote($index)">' +
             '\u2605' +
             '</li>' +
             '</ul>' +
-            '<p>{{photoName}}</p>' +
-            '<button ng-click="unvote()">Unvote</button>' +
+            '<button ng-click="unvote()" ng-hide="isHideUnvote()">Unvote</button>' +
             '</div>',
         scope: {
             photoId: '=',
@@ -17,7 +17,7 @@ myAngularApp.directive('starRating', function (ratingDataService) {
         },
         link: function (scope, elem, attrs) {
             scope.ratingValue = ratingDataService.get(scope.photoId, 0);
-            
+
             var updateStars = function (rate) {
                 scope.stars = [];
                 for (var i = 0; i < scope.max; i++) {
@@ -37,6 +37,15 @@ myAngularApp.directive('starRating', function (ratingDataService) {
                 scope.ratingValue = 0;
                 updateStars(scope.ratingValue);
                 ratingDataService.remove(scope.photoId);
+            };
+
+            scope.isHideVote = function () {
+                var total = ratingDataService.getTotal();
+                return scope.ratingValue == 0 && total >= 10;
+            };
+
+            scope.isHideUnvote = function () {
+                return scope.ratingValue == 0;
             };
 
             updateStars(scope.ratingValue);

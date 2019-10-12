@@ -2,9 +2,9 @@ myAngularApp.factory('ratingDataService', ['$window', function($window, RATING_D
   return {
     set: function(key, value) {
       var ratingData = this.getObject(RATING_DATA_STORAGE_NAME, {});
-      if (ratingData[key]) {
+      if (key in ratingData) {
         ratingData[key] = value;
-      } else {
+      } else if (this.getTotal() < 10) {
         ratingData[key] = value;
       }
       this.setObject(RATING_DATA_STORAGE_NAME, ratingData);
@@ -31,6 +31,11 @@ myAngularApp.factory('ratingDataService', ['$window', function($window, RATING_D
       var ratingData = this.getObject(RATING_DATA_STORAGE_NAME, {});
       delete ratingData[key];
       this.setObject(RATING_DATA_STORAGE_NAME, ratingData);
+    },
+
+    getTotal: function() {
+      var ratingData = this.getObject(RATING_DATA_STORAGE_NAME, {});
+      return Object.keys(ratingData).length;
     }
   }
 }]);

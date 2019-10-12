@@ -39,6 +39,7 @@
         </div>
         <div ng-show="isSet(2)">
           <h1>Photo List</h1>
+          <p>You could vote maximum of 10 photos</p>
           <div class="photo" ng-repeat="photo in photos">
             <img ng-src="{{photo.src}}" class="img-responsive" alt="{{photo.src}}"/>
             <div star-rating photo-id="photo.id" max="maxRating" photo-name="photo.name" class="rating-container"></div>
