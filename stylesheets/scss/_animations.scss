@@ -1,0 +1,30 @@
+.photo.ng-enter,
+.photo.ng-leave,
+.photo.ng-move {
+  transition: 0.5s linear all;
+}
+
+.photo.ng-enter,
+.photo.ng-move {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.photo.ng-enter.ng-enter-active,
+.photo.ng-move.ng-move-active {
+  height: 100px;
+  opacity: 1;
+}
+
+.photo.ng-leave {
+  opacity: 1;
+  overflow: hidden;
+}
+
+.photo.ng-leave.ng-leave-active {
+  height: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}

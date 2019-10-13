@@ -1,8 +1,8 @@
 // Define controller and the objects need to reference.
 myAngularApp.controller('appController', ['$scope', function ($scope) {
 	$scope.tab = 1;
-    $scope.photoNumber = -1;
-    $scope.photoOrderBy = 'name';
+    $scope.photoNumber = null;
+    $scope.photoOrderBy = '';
     $scope.maxRating = 5;
 
     $scope.setTab = function(newTab){
@@ -17,7 +17,9 @@ myAngularApp.controller('appController', ['$scope', function ($scope) {
 			    $scope.photoOrderBy = ['-rating', 'name'];
 				break;
 			default:
-				// code block
+			    $scope.photoNumber = null;
+			    $scope.photoOrderBy = '';
+				break;
 		}
     };
 

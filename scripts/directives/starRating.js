@@ -4,7 +4,7 @@ myAngularApp.directive('starRating', function (ratingDataService) {
         template: '<div class="rating-inner">' +
             '<p>{{photoName}}</p>' +
             '<ul class="rating" ng-hide="isHideVote()">' +
-            '<li ng-repeat="star in stars" ng-class="star" ng-click="vote($index)">' +
+            '<li ng-repeat="star in stars" ng-class="star" ng-click="vote($index)" ng-mouseover="mouseover($index)" ng-mouseout="mouseout()">' +
             '\u2605' +
             '</li>' +
             '</ul>' +
@@ -25,6 +25,14 @@ myAngularApp.directive('starRating', function (ratingDataService) {
                         filled: i < rate
                     });
                 }
+            };
+
+            scope.mouseover = function (index) {
+                console.log('mouseover');
+            };
+
+            scope.mouseout = function () {
+                console.log('mouseout');
             };
 
             scope.vote = function (index) {
