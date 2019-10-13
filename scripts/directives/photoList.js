@@ -8,8 +8,7 @@ myAngularApp.directive('photoList', ['photoService', 'orderByFilter', 'ratingDat
         scope: {
             num: '=',
             orderProperty: '=',
-            maxRating: '=',
-            reverse: '='
+            maxRating: '='
         },
         link: function (scope, elem, attrs) {
             scope.updateArray = function () {
@@ -23,7 +22,7 @@ myAngularApp.directive('photoList', ['photoService', 'orderByFilter', 'ratingDat
                     }
                 });
                 if (scope.orderProperty.length > 0) {
-                    scope.photoArray = orderBy(scope.photoArray, scope.orderProperty, scope.reverse);
+                    scope.photoArray = orderBy(scope.photoArray, scope.orderProperty);
                 }
                 if (scope.num > 0) {
                     scope.photoArray = scope.photoArray.splice(0, scope.num);
@@ -31,7 +30,11 @@ myAngularApp.directive('photoList', ['photoService', 'orderByFilter', 'ratingDat
                 scope.photoArray = scope.photoArray;
             };
 
-            scope.updateArray(scope.photoArray);
+            scope.updateArray();
+
+            scope.$watchGroup(['num', 'orderProperty'], function(newVal, oldVal, scope){
+                scope.updateArray();
+            });
         }
     }
 }]);

@@ -38,15 +38,11 @@
           <h1>FrontendTest-AngularJS</h1>
           <p>Welcome to the website!</p>
         </div>
-        <div ng-show="isSet(2)">
-          <h1>Photo List</h1>
-          <p>You could vote maximum of 10 photos</p>
-          <div photo-list order-property="'name'" reverse="false" max-rating="maxRating">
-          </div>   
-        </div>
-        <div ng-show="isSet(3)">
-          <h1>Top 6 Rating</h1>
-          <div photo-list num="6" order-property="'rating'" reverse="true" max-rating="maxRating">
+        <div ng-show="isSet(2) || isSet(3)">
+          <h1 ng-show="isSet(2)">Photo List</h1>
+          <p ng-show="isSet(2)">You could vote maximum of 10 photos</p>
+          <h1 ng-show="isSet(3)">Top 6 Rating</h1>
+          <div photo-list num="photoNumber" order-property="photoOrderBy" max-rating="maxRating">
           </div>   
         </div>
       </div>
