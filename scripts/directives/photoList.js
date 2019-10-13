@@ -1,9 +1,9 @@
 myAngularApp.directive('photoList', ['photoService', 'orderByFilter', 'ratingDataService', function (photoService, orderBy, ratingDataService, RATING_DATA_STORAGE_NAME) {
     return {
         restrict: 'A',
-        template: '<div class="photo" ng-repeat="photo in photoArray">' +
+        template: '<div class="photo" ng-repeat="photo in photoArray" ng-mouseenter="mouseover(photo.id)" ng-mouseleave="mouseout()">' +
             '<img ng-src="{{photo.src}}" class="img-responsive" alt="{{photo.src}}"/>' +
-            '<div star-rating photo-id="photo.id" max="maxRating" photo-name="photo.name" class="rating-container"></div>' +
+            '<div star-rating photo-id="photo.id" max="maxRating" photo-name="photo.name" class="rating-container" ng-show="isShow(photo.id)"></div>' +
             '</div>',
         scope: {
             num: '=',
@@ -11,6 +11,8 @@ myAngularApp.directive('photoList', ['photoService', 'orderByFilter', 'ratingDat
             maxRating: '='
         },
         link: function (scope, elem, attrs) {
+            scope.hovering = -1;
+
             scope.updateArray = function () {
                 scope.photoArray = photoService.getPhotoArray();
                 scope.ratingData = ratingDataService.getObject(RATING_DATA_STORAGE_NAME);
@@ -28,6 +30,18 @@ myAngularApp.directive('photoList', ['photoService', 'orderByFilter', 'ratingDat
                     scope.photoArray = scope.photoArray.splice(0, scope.num);
                 }
                 scope.photoArray = scope.photoArray;
+            };
+
+            scope.isShow = function (id) {
+                return scope.hovering === id;
+            };
+
+            scope.mouseover = function (id) {
+                scope.hovering = id;
+            };
+
+            scope.mouseout = function () {
+                scope.hovering = -1;
             };
 
             scope.updateArray();

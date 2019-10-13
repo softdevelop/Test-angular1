@@ -36,14 +36,14 @@
     <!-- Pictures -->
     <section class="container">
       <div class="photo-container">
-        <div ng-show="isSet(1)" class="animate-show-hide">
+        <div ng-show="isSet(1)">
           <h1>FrontendTest-AngularJS</h1>
           <p>Welcome to the website!</p>
         </div>
         <div ng-show="isSet(2) || isSet(3)" class="animate-show-hide">
-          <h1 ng-show="isSet(2)" class="animate-show-hide">Photo List</h1>
-          <p ng-show="isSet(2)" class="animate-show-hide">You could vote maximum of 10 photos</p>
-          <h1 ng-show="isSet(3)" class="animate-show-hide">Top 6 Rating</h1>
+          <h1 ng-show="isSet(2)">Photo List</h1>
+          <p ng-show="isSet(2)">You could vote maximum of 10 photos</p>
+          <h1 ng-show="isSet(3)">Top 6 Rating</h1>
           <div photo-list num="photoNumber" order-property="photoOrderBy" max-rating="maxRating">
           </div>   
         </div>

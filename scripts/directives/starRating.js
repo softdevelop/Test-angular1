@@ -28,11 +28,16 @@ myAngularApp.directive('starRating', function (ratingDataService) {
             };
 
             scope.mouseover = function (index) {
-                console.log('mouseover');
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars[i]['filled'] = false;
+                    if (i<=index) {
+                        scope.stars[i]['filled'] = true;
+                    }
+                }
             };
 
             scope.mouseout = function () {
-                console.log('mouseout');
+                updateStars(scope.ratingValue);
             };
 
             scope.vote = function (index) {
