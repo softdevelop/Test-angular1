@@ -2,6 +2,7 @@
 Kvytechnology Test Angular1
 
 ## Setup & using
+
 - Install global sass using npm: 
 
 	#: sudo npm install -g sass
@@ -13,6 +14,10 @@ Kvytechnology Test Angular1
 - Compile scss
 
 	#: sass stylesheets/scss/style.scss stylesheets/style.css
+
+- Run app: build web server at root folder and open index.html file
+
+## Development:
 
 - Wath scss file (readtime update css when edit scss file)
 
