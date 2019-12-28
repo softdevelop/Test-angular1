@@ -22,3 +22,5 @@ Kvytechnology Test Angular1
 - Wath scss file (readtime update css when edit scss file)
 
 	#: sass --watch stylesheets/scss/style.scss stylesheets/style.css
+
+### End
